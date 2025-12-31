@@ -1,0 +1,16 @@
+{
+  "name": "secure-exam-system",
+  "version": "1.0.0",
+  "description": "MERN Stack MVP for Secure University Exam Question Bank",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"cd backend && node server.js\" \"cd frontend && npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

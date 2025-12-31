@@ -1,0 +1,113 @@
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+button.primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+button.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+button.danger {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 0.5rem 1rem;
+}
+
+button.danger:hover {
+  background-color: var(--danger);
+  color: white;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge.public { background-color: rgba(34, 197, 94, 0.2); color: var(--success); }
+.badge.internal { background-color: rgba(37, 99, 235, 0.2); color: var(--primary); }
+.badge.confidential { background-color: rgba(239, 68, 68, 0.2); color: var(--danger); }
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+.nav-header {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
