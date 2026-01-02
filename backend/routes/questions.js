@@ -43,9 +43,10 @@ router.get('/', protect, async (req, res) => {
         let query = {};
 
         // MAC: Students cannot see 'Confidential'
-        if (req.user.role === 'Student') {
-            query.classification = { $ne: 'Confidential' };
-        }
+        // REMOVED: We now handle this in the map/reduce filter to allow DAC overrides.
+        // if (req.user.role === 'Student') {
+        //    query.classification = { $ne: 'Confidential' };
+        // }
 
         const questions = await Question.find(query)
             .populate('owner', 'username department')

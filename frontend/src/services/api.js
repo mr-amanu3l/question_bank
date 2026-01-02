@@ -29,6 +29,7 @@ export const revokeQuestionAccess = (id, payload) => api.post(`/questions/${id}/
 
 export const getUsers = () => api.get('/auth/users');
 export const updateUserRole = (id, role) => api.put(`/auth/users/${id}/role`, { role });
+export const getMe = () => api.get('/auth/me');
 export const getLogs = (params) => api.get('/logs', { params });
 
 export default api;

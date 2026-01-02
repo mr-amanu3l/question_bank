@@ -33,6 +33,27 @@ const Dashboard = () => {
         }
     };
 
+    // Sync user profile on mount
+    useEffect(() => {
+        const syncProfile = async () => {
+            if (user?.token) {
+                try {
+                    const res = await getMe();
+                    const updatedUser = { ...user, ...res.data };
+                    // Only update if role or department changed
+                    if (updatedUser.role !== user.role || updatedUser.department !== user.department) {
+                        console.log('Syncing user profile:', updatedUser);
+                        localStorage.setItem('user', JSON.stringify(updatedUser));
+                        setUser(updatedUser);
+                    }
+                } catch (e) {
+                    console.error('Profile sync failed', e);
+                }
+            }
+        };
+        syncProfile();
+    }, []);
+
     useEffect(() => {
         if (!user) {
             navigate('/login');
@@ -340,7 +361,7 @@ const Dashboard = () => {
                         <div>
                             {renderGroup('Public')}
                             {renderGroup('Internal')}
-                            {user.role !== 'Student' && renderGroup('Confidential')}
+                            {(user.role !== 'Student' || groups['Confidential'].length > 0) && renderGroup('Confidential')}
                         </div>
                     );
                 })()}
